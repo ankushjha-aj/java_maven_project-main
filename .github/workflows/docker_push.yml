@@ -1,6 +1,6 @@
 name: Build Docker Image
 on:
-  repository_dispatch:
+  push:
 
 jobs:
   docker:
