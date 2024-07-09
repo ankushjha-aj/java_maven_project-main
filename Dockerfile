@@ -5,7 +5,7 @@ WORKDIR /app
 
 # copy the project files
 COPY ${WORK_DIR}/pom.xml ./pom.xml
-COPY ./start.sh ./start.sh
+# COPY ./start.sh ./start.sh
 
 # not useful for stateless builds
 # RUN mvn -B dependency:go-offline
@@ -13,14 +13,14 @@ COPY ./start.sh ./start.sh
 COPY ${WORK_DIR}/src ./src
 RUN mvn -B -f /app/pom.xml package
 
-# Create runtime image
-FROM upyogio/8-openjdk-alpine
-#FROM ghcr.io/egovernments/8-openjdk-alpine:latest
+# # Create runtime image
+# FROM upyogio/8-openjdk-alpine
+# #FROM ghcr.io/egovernments/8-openjdk-alpine:latest
 
-WORKDIR /opt/egov
+# WORKDIR /opt/egov
 
-COPY --from=build /app/target/*.jar /app/start.sh /opt/egov/
+# COPY --from=build /app/target/*.jar /app/start.sh /opt/egov/
 
-RUN chmod +x /opt/egov/start.sh
+# RUN chmod +x /opt/egov/start.sh
 
-CMD ["/opt/egov/start.sh"]
+# CMD ["/opt/egov/start.sh"]
