@@ -1,32 +1,32 @@
-# name: Push Docker Image
-# on:
-#   push:
-#     branches:
-#       - main
+name: Push Docker Image
+on:
+  push:
+    branches:
+      - main
       
-# jobs:
-#   build-and-push:
-#     runs-on: ubuntu-latest
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-#     #    - name: Log in to Docker Hub
-#     #     uses: docker/login-action@v2
-#     #     with:
-#     #       registry: docker.io # Optional, good practice to be explicit
-#     #       username: ${{ secrets.DOCKERHUB_USERNAME }}
-#     #       password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    #    - name: Log in to Docker Hub
+    #     uses: docker/login-action@v2
+    #     with:
+    #       registry: docker.io # Optional, good practice to be explicit
+    #       username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #       password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-#       - name: Log in to Docker Hub
-#         run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-#         env:
-#           DOCKER_USERNAME: ankush2642
-#           DOCKER_PASSWORD: dckr_pat_F08gPGVU40KpYSP4-77lSbPaX-8
+      - name: Log in to Docker Hub
+        run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        env:
+          DOCKER_USERNAME: ankush2642
+          DOCKER_PASSWORD: dckr_pat_F08gPGVU40KpYSP4-77lSbPaX-8
 
-#       - name: Build the Docker image
-#         run:  docker build ./ -t ankush2642/java-maven:latest
+      - name: Build the Docker image
+        run:  docker build ./ -t ankush2642/java-maven-test-model:1.0
 
-#       - name: Push the Docker image
-#         run: docker push ankush2642/java-maven:latest\
+      - name: Push the Docker image
+        run: docker push ankush2642/java-maven-test-model:1.0
