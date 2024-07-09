@@ -37,7 +37,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build the Docker image
-        run:  docker build ./ -t ${{ secrets.DOCKERHUB_USERNAME }}/java-maven-test2:1.0
+        run:  docker build ./ -t ${{ secrets.DOCKERHUB_USERNAME }}/java-maven-test2:latest
 
       - name: Push the Docker image
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/java-maven-test-2:1.0
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/java-maven-test-2:latest
