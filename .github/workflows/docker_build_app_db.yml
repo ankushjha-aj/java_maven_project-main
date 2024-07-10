@@ -8,7 +8,10 @@ on:
       FILE_DB:    # Input for the database Dockerfile path
         required: true
         type: string
-      CONTEXT:
+      CONTEXT_APP:
+        required: true
+        type: string
+      CONTEXT_DB:
         required: true
         type: string
 
@@ -21,7 +24,8 @@ on:
 env: 
   FILE_APP: ${{ inputs.FILE_APP }}
   FILE_DB: ${{ inputs.FILE_DB }}
-  CONTEXT: ${{ inputs.CONTEXT }}
+  CONTEXT_APP: ${{ inputs.CONTEXT_APP }}
+  CONTEXT_DB: ${{ inputs.CONTEXT_DB }}
 
 jobs:
   build_and_push_app_and_db:
@@ -50,7 +54,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/velsof-vehicle-app-1:latest
           file: ${{ env.FILE_APP}}
-          context: ${{ env.CONTEXT}} 
+          context: ${{ env.CONTEXT_APP}} 
 
       - name: Build and Push DB Image
         uses: docker/build-push-action@1a162644f9a7e87d8f4b053101d1d9a712edc18c # v6.3.0
@@ -58,4 +62,4 @@ jobs:
           push: true
           tags:   ${{ secrets.DOCKERHUB_USERNAME }}/velsof-vehicle-db-1:latest
           file: ${{ env.FILE_DB}}
-          context: ${{ env.CONTEXT}} 
+          context: ${{ env.CONTEXT_DB}} 
