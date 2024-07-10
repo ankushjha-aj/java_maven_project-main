@@ -1,6 +1,6 @@
 name: Build Docker Image
 on:
-  push:
+  # push:
 
 jobs:
   docker:
@@ -24,7 +24,8 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/java-maven-githubaction:latest
-
+          file: ${{ env.FILE}}
+          context: ${{ env.CONTEXT}}
 
 
 
