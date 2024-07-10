@@ -12,7 +12,7 @@ on:
     secrets:
       DOCKERHUB_USERNAME:
        required: true
-      DOCKERHUB_TOKEN:
+      DOCKERHUB_PASSWORD:
        required: true
        
 env: 
@@ -38,7 +38,7 @@ jobs:
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3.2.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       
       # Build the Docker image
       - name: Build and push
