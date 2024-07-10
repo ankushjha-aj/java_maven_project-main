@@ -5,10 +5,10 @@ on:
       FILE_APP:   # Input for the main application Dockerfile path
         required: true
         type: string
-      FILE_DB:    # Input for the database Dockerfile path
+      CONTEXT_APP:
         required: true
         type: string
-      CONTEXT_APP:
+      FILE_DB:    # Input for the database Dockerfile path
         required: true
         type: string
       CONTEXT_DB:
@@ -23,8 +23,8 @@ on:
 
 env: 
   FILE_APP: ${{ inputs.FILE_APP }}
-  FILE_DB: ${{ inputs.FILE_DB }}
   CONTEXT_APP: ${{ inputs.CONTEXT_APP }}
+  FILE_DB: ${{ inputs.FILE_DB }}
   CONTEXT_DB: ${{ inputs.CONTEXT_DB }}
 
 jobs:
