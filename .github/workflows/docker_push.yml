@@ -24,8 +24,6 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/java-maven-githubaction:latest
-          file: Dockerfile
-          context: ./
 
 
 
