@@ -22,7 +22,7 @@ env:
   FILE: ${{ inputs.FILE }}
   CONTEXT: ${{ inputs.CONTEXT }}
   DOCKER_REPO: ${{ inputs.DOCKER_REPO }}
-  DOCKERHUB_USERNAME: ${{ inputs.DOCKER_USERNAME }}
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   
 jobs:
   Docker_Build:
