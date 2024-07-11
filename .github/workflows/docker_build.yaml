@@ -22,6 +22,7 @@ env:
   FILE: ${{ inputs.FILE }}
   CONTEXT: ${{ inputs.CONTEXT }}
   DOCKER_REPO: ${{ inputs.DOCKER_REPO }}
+  DOCKERHUB_USERNAME: ${{ inputs.DOCKER_USERNAME }}
   
 jobs:
   Docker_Build:
@@ -41,7 +42,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3.2.0
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           
       - name: Get short commit
